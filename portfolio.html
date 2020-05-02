@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Timothy's Portfolio</h1>
+
+    <div class="flex-row">
+        <ul>
+            <a href="about.html">about</a>
+            <a href="projects.html">projects</a>
+            <a href="resume.html">resume</a>
+            <a href="index.html">home</a>
+            <a href="contact.html">contact</a>
+        </ul>
+    </div>
+
+    <div>
+        <a href="https://docs.google.com/document/d/1pZtMAD9yOlqvL7DFndpZdzf-ftJDq33OvNX5iJ997Mc/edit?usp=sharing">Click here to go to my portfolio</a>
+    </div>
+
+    <div>
+        <img id="portPic" src="images/portfolioPic.png">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div>
+        <h2>HTML</h2>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%;background-color: rgb(177, 0, 0);">
+              <p>60%</p>
+            </div>
+            <p>Timothy can wireframe, and write moderate looking code, while keeping the layout of his wireframe.</p>
+          </div>
+    </div>
+
+    <div>
+        <h2>CSS</h2>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:50%;background-color: rgb(177, 0, 0);">
+                <p>80%</p>
+            </div>
+            <p>Timothy can code in CSS and make things look pretty but isn’t perfect. He may take long ways around things, but overall makes things look good.</p>
+        </div>
+    </div>
+
+    <div>
+        <h2>JavaScript</h2>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:45%;background-color: rgb(177, 0, 0);">
+                <p>70%</p>
+            </div>
+            <p>Timothy can create complex looking code, but still has some more keywords to learn and use them in projects.</p>
+        </div>
+    </div>
+<!-- i may not even need adobe animate. doesn't see to fit correctly.-->
+    <div>
+        <h2>Adobe Animate</h2>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active" role="progressbar"
+                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:30%;background-color: rgb(177, 0, 0);">
+                <p>40%</p>
+            </div>
+            <p>Timothy can animate in Adobe Animate, but not quickly. He still has to learn techniques and skills that professionals use. </p>
+        </div>
+    </div>
+
+    <div>
+        <img src="images/violin.png">
+        <div class="musicNote">
+            <img src="images/musicNote.png" id="musicNote-1">
+            <img src="images/musicNote.png" id="musicNote-2">
+            <img src="images/musicNote.png" id="musicNote-3">
+        </div>
+    </div>
+
+    <canvas class="matrix" id="c"></canvas>
+    
+    <script>
+    // geting canvas by id c
+    var c = document.getElementById("c");
+    var ctx = c.getContext("2d");
+
+    //making the canvas full screen
+    c.height = window.innerHeight;
+    c.width = window.innerWidth;
+
+    //chinese characters - taken from the unicode charset
+    var matrix = "田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑";
+    //converting the string into an array of single characters
+    matrix = matrix.split("");
+
+    var font_size = 10;
+    var columns = c.width / font_size; //number of columns for the rain
+    //an array of drops - one per column
+    var drops = [];
+    //x below is the x coordinate
+    //1 = y co-ordinate of the drop(same for every drop initially)
+    for(var x = 0; x < columns; x++)
+        drops[x] = 1; 
+
+    //drawing the characters
+    function draw()
+    {
+        //Black BG for the canvas
+        //translucent BG to show trail
+        ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        ctx.fillStyle = "#0F0"; //green text
+        ctx.font = font_size + "px arial";
+        //looping over drops
+        for( var i = 0; i < drops.length; i++ )
+        {
+            //a random chinese character to print
+            var text = matrix[ Math.floor( Math.random() * matrix.length ) ];
+            //x = i*font_size, y = value of drops[i]*font_size
+            ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+            //sending the drop back to the top randomly after it has crossed the screen
+            //adding a randomness to the reset to make the drops scattered on the Y axis
+            if( drops[i] * font_size > c.height && Math.random() > 0.990 )
+                drops[i] = 0;
+
+            //incrementing Y coordinate
+            drops[i]++;
+        }
+    }
+
+    setInterval( draw, 35 );
+
+
+    </script>
+
+</body>
+</html>
