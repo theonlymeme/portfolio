@@ -19,13 +19,17 @@
             height:500px;
         }
         </style>
+        <!-- below are all the links------->
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="all.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+        <!--------------------------------->
 </head>
 <body>
     <h1> Timothy Long's Portfolio website</h1>
 
     <div class="flex-row">
-        <ul>
+        <ul id="header">
             <a href="about.html">about</a>
             <a href="projects.html">projects</a>
             <a href="resume.html">resume</a>
@@ -35,7 +39,7 @@
     </div>
 
     <div class="flex-column">
-        <H2>Subject 1A: Timothy Long</H2>
+        <H2> What to see...</H2>
         <p>Timothy Long is 18 years old and is a student at Buchanan High school and CART. He plans to go into the Air Force after high school. He is also well acquainted with several coding languages: CSS, HTML, JavaScript, and C++. Based on this website you will see his ability to use most of those languages to the fullest.</p>
     </div>
 
@@ -52,7 +56,7 @@
   var distance = getRandomDistance();
   
   var target = document.getElementById("ghost");
-  var target_pos = {top:250,left:5}
+  var target_pos = {top:350,left:10}
   
   var i = 0;
   
@@ -95,7 +99,7 @@
        }
         
        case directions.right: {
-         if(target_pos.left > 5){
+         if(target_pos.left > 10){
             target_pos.left -= step;
             target.style.left = target_pos.left + "px";
          }
@@ -103,7 +107,7 @@
        }
         
        case directions.down: {
-         if(target_pos.top > 235){
+         if(target_pos.top > 400 ){
             target_pos.top -= step;
             target.style.top = target_pos.top + "px";
          }
