@@ -4,18 +4,26 @@ body{
 p, h1{
     color:rgb(0, 190, 0);
 }
+h1{
+    font-size: 60px;
+    font-family: 'Roboto Mono', monospace;
+}
+p{
+    font-family: 'Roboto Mono', monospace;
+}
 
 #header{
-    background-color: rgba(138, 2, 2, 0.596);
+    background-color: rgba(138, 2, 2, 0.54);
     width:auto;
     padding-top:20px;
     padding-bottom:20px;
+    text-align: center;
 }
 #header a{
     font-family: 'Roboto Mono', monospace;
     background-color: black;
     font-size: 35px;
-    margin-right: 5%;
+    margin-right: 8%;
     color:rgb(0, 190, 0);
     text-decoration: none;
     border-radius: 15%;
@@ -24,4 +32,8 @@ p, h1{
 #header a:hover{
     padding:30px;
     border-radius: 50%;
+}
+/*below is for flex, please don't mess*/
+.flex-row{
+    display:flex;
 }
